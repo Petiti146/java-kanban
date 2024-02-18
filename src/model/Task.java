@@ -1,28 +1,30 @@
+package model;
+
 import java.util.Objects;
 import java.util.Random;
 
 public class Task {
     private int id;
-    private String title;
+    private String name;
     private String description;
     private Status status;
+    private Integer epicId;
 
 
-    public Task(String title, String description, Status status) {
-        Random random = new Random();
-        this.id = random.nextInt();
-        this.title = title;
-        this.description = description;
-        this.status = status;
+    public int getId() {
+        return id;
     }
 
-
-    public String getTitle() {
-        return title;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -33,14 +35,6 @@ public class Task {
         this.description = description;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public Status getStatus() {
         return status;
     }
@@ -49,26 +43,35 @@ public class Task {
         this.status = status;
     }
 
+    public Integer getEpicId() {
+        return epicId;
+    }
+
+    public void setEpicId(Integer epicId) {
+        this.epicId = epicId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return id == task.id && Objects.equals(title, task.title) && Objects.equals(description, task.description) && status == task.status;
+        return id == task.id && Objects.equals(name, task.name) && Objects.equals(description, task.description) && status == task.status && Objects.equals(epicId, task.epicId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, description, id, status);
+        return Objects.hash(id, name, description, status, epicId);
     }
 
     @Override
     public String toString() {
         return "Task{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", id=" + id +
                 ", status=" + status +
+                ", epicId=" + epicId +
                 '}';
     }
 }

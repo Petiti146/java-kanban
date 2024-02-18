@@ -1,7 +1,5 @@
 package model;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class Epic {
@@ -10,7 +8,12 @@ public class Epic {
     private String description;
     private Status status;
 
-    private Map<Integer, Task> tasks = new HashMap<>();
+
+    public Epic(String name, String description, Status status) {
+        this.name = name;
+        this.description = description;
+        this.status = status;
+    }
 
     public int getId() {
         return id;
@@ -44,13 +47,6 @@ public class Epic {
         this.status = status;
     }
 
-    public Map<Integer, Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(Map<Integer, Task> tasks) {
-        this.tasks = tasks;
-    }
 
     @Override
     public boolean equals(Object o) {

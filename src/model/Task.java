@@ -10,6 +10,13 @@ public class Task {
     private Status status;
     private Integer epicId;
 
+    public Task(String name, String description, Status status, Integer epicId) {
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.epicId = epicId;
+    }
+
 
     public int getId() {
         return id;

@@ -1,6 +1,8 @@
 import model.Epic;
+import model.Status;
 import model.Task;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,10 +44,11 @@ public class Manager {
             System.out.println("Эпика под таким id не существует");
             return;
         }
-        Epic oldEpic = epics.get(id);
+        Epic oldEpic = epics.get(id);// из базы данных достаю эпик по id
         oldEpic.setName(epic.getName());
         oldEpic.setDescription(epic.getDescription());
         oldEpic.setStatus(epic.getStatus());
+        epics.put(oldEpic.getId(), oldEpic);
     }
 
     public Task createTask(Task task) {
@@ -61,6 +64,11 @@ public class Manager {
 
         task.setId(++taskIdCounter);
         tasks.put(task.getId(), task);
+
+        Epic epic = readEpicById(task.getEpicId());
+        epic.setStatus(Status.IN_PROGRESS);
+        updateEpicById(epic.getId(), epic);
+
         return tasks.get(task.getId());
     }
 
@@ -77,19 +85,26 @@ public class Manager {
     }
 
     public void deleteTaskById(int id) {
+        Task task = readTaskById(id);
         if (tasks.get(id) == null) {
             System.out.println("Задачи под таким id не существует");
             return;
         }
         tasks.remove(id);
+
+        updateEpicStatus(task);
     }
 
+
     public void updateTaskById(int id, Task task) {
-        Task oldEpic = tasks.get(id);
-        oldEpic.setName(task.getName());
-        oldEpic.setDescription(task.getDescription());
-        oldEpic.setStatus(task.getStatus());
-        oldEpic.setEpicId(task.getEpicId());
+        Task oldTask = tasks.get(id);
+        oldTask.setName(task.getName());
+        oldTask.setDescription(task.getDescription());
+        oldTask.setStatus(task.getStatus());
+        oldTask.setEpicId(task.getEpicId());
+        tasks.put(oldTask.getId(), oldTask);
+
+        updateEpicStatus(oldTask);
     }
 
     public void displayEpics() {
@@ -102,5 +117,29 @@ public class Manager {
         for (Task task : tasks.values()) {
             System.out.printf("%d. %s (%s)%n", task.getId(), task.getName(), task.getStatus());
         }
+    }
+
+    private void updateEpicStatus(Task task) {
+        Epic epic = readEpicById(task.getId());
+        List<Task> epicTasks = new ArrayList<>();
+        for (Task t : tasks.values()) {
+            if (t.getEpicId() != null && epic.getId() == t.getEpicId()) {
+                epicTasks.add(t);
+            }
+        }
+
+        List<Task> epicTasksWereDone = new ArrayList<>();
+        for (Task t : epicTasks) {
+            if (Status.DONE.equals(t.getStatus())) {
+                epicTasksWereDone.add(t);
+            }
+        }
+
+        if (epicTasks.size() == epicTasksWereDone.size()) {
+            epic.setStatus(Status.DONE);
+        } else {
+            epic.setStatus(Status.IN_PROGRESS);
+        }
+        updateEpicById(epic.getId(), epic);
     }
 }

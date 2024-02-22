@@ -1,76 +1,43 @@
 package model;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
-public class Epic {
-    private int id;
-    private String name;
-    private String description;
-    private Status status;
+class Epic extends Task {
 
+    private Set<Integer> subTaskIds = new HashSet<>();
 
-    public Epic(String name, String description, Status status) {
-        this.name = name;
-        this.description = description;
-        this.status = status;
+    public Epic(String name, String description) {
+        super(name, description);
     }
 
-    public int getId() {
-        return id;
+    public Set<Integer> getSubTaskIds() {
+        return subTaskIds;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSubTaskIds(Set<Integer> subTaskIds) {
+        this.subTaskIds = subTaskIds;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Epic epic = (Epic) o;
-        return id == epic.id && Objects.equals(name, epic.name) && Objects.equals(description, epic.description) && status == epic.status;
+        return Objects.equals(subTaskIds, epic.subTaskIds);
     }
-
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, status);
+        return Objects.hash(super.hashCode(), subTaskIds);
     }
 
     @Override
     public String toString() {
         return "Epic{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", status=" + status +
+                "subTaskIds=" + subTaskIds +
                 '}';
     }
-
-
 }

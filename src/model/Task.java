@@ -1,22 +1,24 @@
 package model;
 
+import model.CounterId;
+import model.Status;
+
 import java.util.Objects;
-import java.util.Random;
 
 public class Task {
+
     private int id;
     private String name;
     private String description;
     private Status status;
-    private Integer epicId;
 
-    public Task(String name, String description, Status status, Integer epicId) {
+
+    public Task(String name, String description) {
+        this.id = CounterId.getId();
         this.name = name;
         this.description = description;
-        this.status = status;
-        this.epicId = epicId;
+        this.status = Status.NEW;
     }
-
 
     public int getId() {
         return id;
@@ -50,35 +52,28 @@ public class Task {
         this.status = status;
     }
 
-    public Integer getEpicId() {
-        return epicId;
-    }
-
-    public void setEpicId(Integer epicId) {
-        this.epicId = epicId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return id == task.id && Objects.equals(name, task.name) && Objects.equals(description, task.description) && status == task.status && Objects.equals(epicId, task.epicId);
+        return id == task.id && Objects.equals(name, task.name) && Objects.equals(description, task.description) && status == task.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, status, epicId);
+        return Objects.hash(name, description, status, id);
     }
 
     @Override
     public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "Model.Task{" +
+                "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", status=" + status +
-                ", epicId=" + epicId +
+                ", id=" + id +
                 '}';
     }
+
+
 }

@@ -1,0 +1,29 @@
+[33mcommit 5d721b395d855f1014ac74ea3c56618d7097b1d2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: User Petyan <petiti14771@mail.ru>
+Date:   Thu Feb 22 11:39:20 2024 +0300
+
+    Done
+
+[33mcommit a68d8423b338e0d66a867984e98605c60a813c8c[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: User Petyan <petiti14771@mail.ru>
+Date:   Mon Feb 19 00:10:07 2024 +0300
+
+    Optimize logics
+
+[33mcommit de8552b26912eee525fad6528f01b56b77f5dfe6[m
+Author: User Petyan <petiti14771@mail.ru>
+Date:   Sun Feb 18 21:44:48 2024 +0300
+
+    Add models and manager class
+
+[33mcommit f380671e7a2626a331311c2c05fbda3becd5ba4f[m
+Author: User Petyan <petiti14771@mail.ru>
+Date:   Sun Feb 18 21:36:58 2024 +0300
+
+    Create project
+
+[33mcommit 0fbcd673ca4c638182f6356b834daee93ef3bfe5[m
+Author: Petiti <154267564+Petiti146@users.noreply.github.com>
+Date:   Thu Feb 15 14:48:11 2024 +0300
+
+    Initial commit

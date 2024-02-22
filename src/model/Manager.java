@@ -88,6 +88,9 @@ public class Manager {
             if (Status.DONE.equals(subTaskOfEpic.getStatus())) {
                 finishedTaskCounter++;
             }
+            if (Status.IN_PROGRESS.equals(subTaskOfEpic.getStatus())) {
+                epic.setStatus(Status.IN_PROGRESS);
+            }
             subTaskList.add(subTaskOfEpic);
         }
 
@@ -189,6 +192,7 @@ public class Manager {
             System.out.println("Подзадачи под таким id не существует");
             return null;
         }
+        tasks.get(id).toString();
         return (SubTask) tasks.get(id);
     }
 

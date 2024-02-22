@@ -1,7 +1,4 @@
-package model;
-
-import model.CounterId;
-import model.Status;
+package taskManager;
 
 import java.util.Objects;
 

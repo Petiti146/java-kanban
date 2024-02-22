@@ -1,4 +1,4 @@
-package model;
+package taskManager;
 
 public class Main {
 
@@ -8,11 +8,11 @@ public class Main {
         SubTask subTask1 = new SubTask("SubTask1", null, 1);
         Task task2 = new Task("Это обычная задача, не эипик", null);
 
-        Manager manager = new Manager();
+        TaskManager manager = new TaskManager();
         manager.addTask(task1);
         manager.addTask(task2);
 
-        manager.addSubTask(task1, subTask1);
+        manager.addSubTask(subTask1);
 
         manager.readEpicById(task1.getId());
         subTask1.setStatus(Status.IN_PROGRESS);
@@ -21,15 +21,14 @@ public class Main {
         Epic epic = manager.readEpicById(task1.getId());
         System.out.println(manager.readSubTaskById(2));
         System.out.println(".....................");
-        System.out.println(manager.readTaskById(3));
+        System.out.println(manager.getTaskById(3));
         System.out.println(".....................");
         System.out.println(manager.readEpicById(1));
         System.out.println(".....................");
-        System.out.println(manager.readTaskById(task2.getId()));
+        System.out.println(manager.getTaskById(task2.getId()));
         System.out.println("вот щас ридтаскс");
         System.out.println(manager.readTasks());
         System.out.println(".....................");
-        manager.displayEpics();
         System.out.println(".....................");
         manager.displayTasks();
     }

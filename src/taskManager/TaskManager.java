@@ -1,11 +1,11 @@
-package model;
+package taskManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Manager {
+public class TaskManager {
 
     private Map<Integer, Task> tasks = new HashMap<>();
 
@@ -13,9 +13,11 @@ public class Manager {
         return tasks.put(task.getId(), task);
     }
 
-    public SubTask addSubTask(Task task, SubTask subTask) {
-        Epic epic = new Epic(task.getName(), task.getDescription());
-        epic.setId(task.getId());
+    public SubTask addSubTask(SubTask subTask) {
+        Task taskGoToEpic;
+        taskGoToEpic = tasks.get(subTask.getParentId());
+        Epic epic = new Epic(taskGoToEpic.getName(), taskGoToEpic.getDescription());
+        epic.setId(taskGoToEpic.getId());
         subTask.setParentId(epic.getId());
         tasks.put(epic.getId(), epic);
         tasks.put(subTask.getId(), subTask);
@@ -29,7 +31,7 @@ public class Manager {
 
     public Task updateTask(Task task) {
         if (!isTaskExist(task.getId())) {
-            System.out.println("Задача с таким id не существует");
+            System.out.println("Задача с таким id не существует");//для самопроверки все принтлн
             return null;
         }
         Task oldTask = tasks.get(task.getId());
@@ -179,11 +181,7 @@ public class Manager {
         return tasks.remove(id) == null;
     }
 
-    public Task readTaskById(int id) {
-        if (tasks.get(id) == null) {
-            System.out.println("Задачи под таким id не существует");
-            return null;
-        }
+    public Task getTaskById(int id) {
         return tasks.get(id);
     }
 
@@ -236,15 +234,7 @@ public class Manager {
         }
     }
 
-    public void displayEpics() {
-        for (Task task : tasks.values()) {
-            if (task instanceof Epic epic) {
-                System.out.printf("%d. %s (%s)%n", task.getId(), task.getName(), task.getStatus());
-            }
-        }
-    }
-
-    public void displayTasks() {
+    public void displayTasks() {//для самопроверки
         for (Task task : tasks.values()) {
             if (task instanceof SubTask task1) {
                 System.out.printf("%d. %s (%s)%n", task.getId(), task.getName(), task.getStatus());

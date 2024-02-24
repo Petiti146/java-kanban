@@ -1,17 +1,27 @@
-package taskManager;
+package model;
+
+import util.Status;
 
 import java.util.Objects;
 
 public class Task {
 
-    private int id;
+    static int idCounter;
+    private final int id;
     private String name;
     private String description;
     private Status status;
 
 
     public Task(String name, String description) {
-        this.id = CounterId.getId();
+        this.id = ++idCounter;
+        this.name = name;
+        this.description = description;
+        this.status = Status.NEW;
+    }
+
+    protected Task(int id, String name, String description) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.status = Status.NEW;
@@ -19,10 +29,6 @@ public class Task {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -64,13 +70,13 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Model.Task{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", status=" + status +
-                ", id=" + id +
-                '}';
+        return "Задача:" + "\n" +
+                "Название: " + name + "\n" +
+                "Описание: " + description + "\n" +
+                "Статус: " + status + "\n";
     }
 
-
+    public static int getId(int id) {
+        return ++id;
+    }
 }

@@ -1,9 +1,9 @@
-package taskManager;
+package model;
 
 import java.util.Objects;
 
-public class SubTask extends Task {
-    private Integer parentId;
+public class SubTask extends model.Task {
+    private final Integer parentId;
 
 
     public SubTask(String name, String description, int parentId) {
@@ -13,10 +13,6 @@ public class SubTask extends Task {
 
     public Integer getParentId() {
         return parentId;
-    }
-
-    public void setParentId(int parentId) {
-        this.parentId = parentId;
     }
 
     @Override
@@ -35,11 +31,10 @@ public class SubTask extends Task {
 
     @Override
     public String toString() {
-        return "SubTask{" +
-                "name='" + getName() + '\'' +
-                ", description='" + getDescription() + '\'' +
-                ", status=" + getStatus() +
-                ", id=" + getId() +
-                '}';
+        return "Подзадача: " +"\n" +
+                "Название: " + getName() + "\n" +
+                "Описание: " + getDescription() + "\n" +
+                "Статус: " + getStatus();
     }
 }
+

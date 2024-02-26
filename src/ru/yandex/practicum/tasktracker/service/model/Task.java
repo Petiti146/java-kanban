@@ -1,6 +1,4 @@
-package model;
-
-import util.Status;
+package ru.yandex.practicum.tasktracker.service.model;
 
 import java.util.Objects;
 
@@ -14,7 +12,7 @@ public class Task {
 
 
     public Task(String name, String description) {
-        this.id = ++idCounter;
+        this.id = ++idCounter;//реализовал в итоге так
         this.name = name;
         this.description = description;
         this.status = Status.NEW;
@@ -57,8 +55,12 @@ public class Task {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Task task = (Task) o;
         return id == task.id && Objects.equals(name, task.name) && Objects.equals(description, task.description) && status == task.status;
     }

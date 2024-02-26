@@ -1,15 +1,15 @@
-package model;
+package ru.yandex.practicum.tasktracker.service.model;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Epic extends model.Task {
+public class Epic extends Task {
 
     private final Set<Integer> subTaskIds = new HashSet<>();
 
 
-    public Epic(model.Task task){
+    public Epic(Task task) {
         super(task.getId(), task.getName(), task.getDescription());
     }
 
@@ -27,9 +27,15 @@ public class Epic extends model.Task {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
         Epic epic = (Epic) o;
         return Objects.equals(subTaskIds, epic.subTaskIds);
     }

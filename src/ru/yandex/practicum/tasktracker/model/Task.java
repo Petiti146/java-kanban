@@ -1,32 +1,33 @@
-package ru.yandex.practicum.tasktracker.service.model;
+package ru.yandex.practicum.tasktracker.model;
 
 import java.util.Objects;
 
 public class Task {
 
-    static int idCounter;
-    private final int id;
+    private int id;
     private String name;
     private String description;
-    private Status status;
-
+    private TaskStatus status;
 
     public Task(String name, String description) {
-        this.id = ++idCounter;//реализовал в итоге так
         this.name = name;
         this.description = description;
-        this.status = Status.NEW;
+        this.status = TaskStatus.NEW;
     }
 
     protected Task(int id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.status = Status.NEW;
+        this.status = TaskStatus.NEW;
     }
 
     public int getId() {
-        return id;
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -45,11 +46,11 @@ public class Task {
         this.description = description;
     }
 
-    public Status getStatus() {
+    public TaskStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(TaskStatus status) {
         this.status = status;
     }
 
@@ -76,9 +77,5 @@ public class Task {
                 "Название: " + name + "\n" +
                 "Описание: " + description + "\n" +
                 "Статус: " + status + "\n";
-    }
-
-    public static int getId(int id) {
-        return ++id;
     }
 }

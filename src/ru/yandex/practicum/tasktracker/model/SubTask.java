@@ -1,18 +1,18 @@
-package ru.yandex.practicum.tasktracker.service.model;
+package ru.yandex.practicum.tasktracker.model;
 
 import java.util.Objects;
 
 public class SubTask extends Task {
-    private final Integer parentId;
+    private final Integer epicId;
 
 
-    public SubTask(String name, String description, int parentId) {
+    public SubTask(String name, String description, int epicId) {
         super(name, description);
-        this.parentId = parentId;
+        this.epicId = epicId;
     }
 
-    public Integer getParentId() {
-        return parentId;
+    public Integer getEpicId() {
+        return epicId;
     }
 
     @Override
@@ -27,12 +27,12 @@ public class SubTask extends Task {
             return false;
         }
         SubTask subTask = (SubTask) o;
-        return Objects.equals(parentId, subTask.parentId);
+        return Objects.equals(epicId, subTask.epicId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), parentId);
+        return Objects.hash(super.hashCode(), epicId);
     }
 
     @Override

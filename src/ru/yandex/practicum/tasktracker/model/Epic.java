@@ -1,4 +1,4 @@
-package ru.yandex.practicum.tasktracker.service.model;
+package ru.yandex.practicum.tasktracker.model;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -8,7 +8,6 @@ public class Epic extends Task {
 
     private final Set<Integer> subTaskIds = new HashSet<>();
 
-
     public Epic(Task task) {
         super(task.getId(), task.getName(), task.getDescription());
     }
@@ -17,12 +16,12 @@ public class Epic extends Task {
         return new HashSet<>(subTaskIds);
     }
 
-    public boolean addSubTaskId(int subTaskId) {
-        return subTaskIds.add(subTaskId);
+    public void addSubTaskId(int subTaskId) {
+        subTaskIds.add(subTaskId);
     }
 
-    public boolean removeSubTaskId(int subTaskId) {
-        return subTaskIds.remove(subTaskId);
+    public void removeSubTaskId(int subTaskId) {
+        subTaskIds.remove(subTaskId);
     }
 
     @Override

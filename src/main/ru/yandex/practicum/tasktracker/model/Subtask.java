@@ -2,11 +2,11 @@ package ru.yandex.practicum.tasktracker.model;
 
 import java.util.Objects;
 
-public class SubTask extends Task {
-    private final Integer epicId;
+public class Subtask extends Task {
+    private Integer epicId;
 
 
-    public SubTask(String name, String description, int epicId) {
+    public Subtask(String name, String description, Integer epicId) {
         super(name, description);
         this.epicId = epicId;
     }
@@ -15,24 +15,25 @@ public class SubTask extends Task {
         return epicId;
     }
 
+    public void setEpicId(Integer epicId) {
+        this.epicId = epicId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (o == null || getClass().getSuperclass() != o.getClass().getSuperclass()) {
             return false;
         }
-        if (!super.equals(o)) {
-            return false;
-        }
-        SubTask subTask = (SubTask) o;
-        return Objects.equals(epicId, subTask.epicId);
+        Task task = (Task) o;
+        return Objects.equals(super.getId(), task.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), epicId);
+        return Objects.hash(super.hashCode(), getId());
     }
 
     @Override
@@ -43,4 +44,3 @@ public class SubTask extends Task {
                 "Статус: " + getStatus();
     }
 }
-

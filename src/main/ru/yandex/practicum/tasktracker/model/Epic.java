@@ -12,6 +12,10 @@ public class Epic extends Task {
         super(task.getId(), task.getName(), task.getDescription());
     }
 
+    public Epic(String epicName, String epicDescription) {
+        super(epicName, epicDescription);
+    }
+
     public Set<Integer> getSubTaskIds() {
         return new HashSet<>(subTaskIds);
     }
@@ -29,19 +33,16 @@ public class Epic extends Task {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (o == null || getClass().getSuperclass() != o.getClass().getSuperclass()) {
             return false;
         }
-        if (!super.equals(o)) {
-            return false;
-        }
-        Epic epic = (Epic) o;
-        return Objects.equals(subTaskIds, epic.subTaskIds);
+        Task task = (Task) o;
+        return Objects.equals(super.getId(), task.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), subTaskIds);
+        return Objects.hash(super.hashCode(), getId());
     }
 
     @Override

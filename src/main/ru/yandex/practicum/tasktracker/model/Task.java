@@ -15,7 +15,7 @@ public class Task {
         this.status = TaskStatus.NEW;
     }
 
-    protected Task(int id, String name, String description) {
+    public Task(int id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -63,12 +63,12 @@ public class Task {
             return false;
         }
         Task task = (Task) o;
-        return id == task.id && Objects.equals(name, task.name) && Objects.equals(description, task.description) && status == task.status;
+        return Objects.equals(id, task.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, status, id);
+        return Objects.hash(id);
     }
 
     @Override

@@ -10,8 +10,10 @@ public class InMemoryHistoryManager implements HistoryManager {
     private final List<Task> tasks = new ArrayList<>(11);
 
     @Override
-    public void add(Task task) {
-        tasks.add(task);
+    public void add(Task task) {//я понял о чем ты, спасибо, правда безполезно там ифы делаю
+        if (task != null) {
+            tasks.add(task);
+        }
         if (tasks.size() > 10) {
             tasks.remove(0);
         }

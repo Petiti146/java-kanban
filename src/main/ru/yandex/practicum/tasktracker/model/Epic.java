@@ -28,6 +28,10 @@ public class Epic extends Task {
         subTaskIds.remove(subTaskId);
     }
 
+    public void removeAllSubTaskId() {
+        subTaskIds.clear();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

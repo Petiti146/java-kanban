@@ -25,6 +25,7 @@ public class Main {
         manager.addSubtask(subtask3);
         manager.addTask(task4);
         Subtask subtask4 = new Subtask("Подзадача 4", "Это ко первому", task.getId());
+        manager.addSubtask(subtask4);
         subTask.setStatus(TaskStatus.IN_PROGRESS);
         subtask2.setStatus(TaskStatus.DONE);
         task4.setStatus(TaskStatus.IN_PROGRESS);
@@ -43,9 +44,11 @@ public class Main {
         System.out.println("////////////////внизу добавляю саб таску");
         manager.addSubtask(subtask4);
         System.out.println(manager.getEpicById(task.getId()));
+        manager.deleteAllSubTasks();
+        System.out.println(manager.getEpics());
     }
 
-    private static void printAllTasks(TaskManager manager) {
+    /*private static void printAllTasks(TaskManager manager) {
         System.out.println("Задачи:");
         for (Task task : manager.getTasks()) {
             System.out.println(task);
@@ -67,5 +70,5 @@ public class Main {
         for (Task task : manager.getHistory()) {
             System.out.println(task);
         }
-    }
+    }*/
 }

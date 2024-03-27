@@ -51,7 +51,11 @@
     "Application.taskManager.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "true",
     "JUnit.InMemoryHistoryManagerTest.addNewTask.executor": "Run",
+    "JUnit.InMemoryHistoryManagerTest.executor": "Run",
     "JUnit.InMemoryTaskManagerTest.addNewTask.executor": "Run",
+    "JUnit.InMemoryTaskManagerTest.executor": "Run",
+    "JUnit.ManagersTest.executor": "Run",
+    "JUnit.TaskTest.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
@@ -231,16 +235,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/ru/yandex/practicum/tasktracker/Main.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/ru/yandex/practicum/tasktracker/Main.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/ru/yandex/practicum/tasktracker/service/InMemoryTaskManager.java</url>

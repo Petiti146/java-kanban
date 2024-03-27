@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5697aac-b96c-45d6-949f-0f2dbc4cc358" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/ru/yandex/practicum/tasktracker/util/Node.java" afterDir="false" />
+    <list default="true" id="e5697aac-b96c-45d6-949f-0f2dbc4cc358" name="Changes" comment="Add list to my linked list in history">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ru/yandex/practicum/tasktracker/service/HistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ru/yandex/practicum/tasktracker/service/HistoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ru/yandex/practicum/tasktracker/service/InMemoryHistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ru/yandex/practicum/tasktracker/service/InMemoryHistoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ru/yandex/practicum/tasktracker/service/InMemoryTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ru/yandex/practicum/tasktracker/service/InMemoryTaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ru/yandex/practicum/tasktracker/service/InMemoryHistoryManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ru/yandex/practicum/tasktracker/service/InMemoryHistoryManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +186,20 @@
       <option name="presentableId" value="Default" />
       <updated>1708005374638</updated>
     </task>
+    <task id="LOCAL-00001" summary="Add list to my linked list in history">
+      <option name="closed" value="true" />
+      <created>1711578064090</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711578064090</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add list to my linked list in history" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add list to my linked list in history" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

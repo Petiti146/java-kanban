@@ -155,7 +155,7 @@ public class InMemoryTaskManager implements TaskManager {
         for (Integer subTaskId : epic.getSubTaskIds()) {
             Subtask subTask = subTasks.get(subTaskId);
             if (subTask == null) {//долго думал, но думаю если по твоей логике, то если удалить
-                epic.removeAllSubTaskId();
+                epic.removeAllSubTaskIds();
                 epic.setStatus(TaskStatus.NEW);//все саб таски, то эпики NEW
                 return;//тестить уже время нет, я в лс отписал и закоментировал метод deleteAllSubTasks
             }//подумай, может быть это все таки логичнее, в условии прямо не сказано, но мне показалось это очевидным

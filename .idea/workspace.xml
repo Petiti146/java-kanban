@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5697aac-b96c-45d6-949f-0f2dbc4cc358" name="Changes" comment="Add github action build job" />
+    <list default="true" id="e5697aac-b96c-45d6-949f-0f2dbc4cc358" name="Changes" comment="Remove unused imports">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +47,7 @@
     "Application.model.Main.executor": "Run",
     "Application.taskManager.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "true",
+    "JUnit.All in java-kanban.executor": "Run",
     "JUnit.InMemoryHistoryManagerTest.addNewTask.executor": "Run",
     "JUnit.InMemoryHistoryManagerTest.executor": "Run",
     "JUnit.InMemoryTaskManagerTest.addNewTask.executor": "Run",
@@ -85,7 +88,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ru.yandex.practicum.tasktracker in java-kanban">
+  <component name="RunManager" selected="JUnit.All in java-kanban">
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.yandex.practicum.tasktracker.util.Test" />
       <module name="java-kanban" />
@@ -99,17 +102,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InMemoryHistoryManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in java-kanban" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java-kanban" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.yandex.practicum.tasktracker.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.yandex.practicum.tasktracker.service" />
-      <option name="MAIN_CLASS_NAME" value="ru.yandex.practicum.tasktracker.service.InMemoryHistoryManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -160,11 +156,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in java-kanban" />
         <item itemvalue="JUnit.ru.yandex.practicum.tasktracker in java-kanban" />
         <item itemvalue="Application.Test" />
         <item itemvalue="JUnit.ManagersTest" />
         <item itemvalue="JUnit.InMemoryTaskManagerTest" />
-        <item itemvalue="JUnit.InMemoryHistoryManagerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -200,13 +196,22 @@
       <option name="project" value="LOCAL" />
       <updated>1711578527867</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Remove unused imports">
+      <option name="closed" value="true" />
+      <created>1711579219462</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1711579219462</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add list to my linked list in history" />
     <MESSAGE value="Add github action build job" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add github action build job" />
+    <MESSAGE value="Remove unused imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove unused imports" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

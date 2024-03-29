@@ -53,7 +53,7 @@ public class InMemoryHistoryManager implements HistoryManager {
         }
     }
 
-    public void removeNode(Node node) {
+    private void removeNode(Node node) {
         Node currentNode = map.get(node.getData().getId());
         if (currentNode.getPrev() != null) {
             currentNode.getPrev().setNext(currentNode.getNext());
@@ -71,17 +71,5 @@ public class InMemoryHistoryManager implements HistoryManager {
             history.add(node.getData());
         }
         return history;
-    }
-
-    private void remove(Node node) {
-        if (map.get(node.getData().getId()) == null) {
-            throw new RuntimeException("Такого элемента не существует");
-        }
-        Node currentNode = map.get(node.getData().getId());
-        Node nextNode = currentNode.getNext();
-        Node lastNode = currentNode.getPrev();
-        nextNode.setPrev(lastNode);
-        lastNode.setNext(nextNode);
-        map.remove(node.getData().getId());
     }
 }

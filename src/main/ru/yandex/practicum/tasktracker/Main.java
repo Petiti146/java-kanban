@@ -1,26 +1,22 @@
 package ru.yandex.practicum.tasktracker;
 
-import ru.yandex.practicum.tasktracker.service.FileBackedTaskManager;
 import ru.yandex.practicum.tasktracker.service.InMemoryTaskManager;
 import ru.yandex.practicum.tasktracker.service.TaskManager;
 import ru.yandex.practicum.tasktracker.model.TaskStatus;
 import ru.yandex.practicum.tasktracker.model.Subtask;
 import ru.yandex.practicum.tasktracker.model.Task;
 
-import java.io.File;
-import java.io.IOException;
-
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        TaskManager manager = new FileBackedTaskManager(File.createTempFile("File1" , ".csv"));
-        Task task = new Task("Epic 1", "work");
-        Subtask subTask = new Subtask("Подзадача 1", "hard work", 1);
-        Task task2 = new Task("Epic 2", "прогать");
-        Subtask subtask2 = new Subtask("SubTask 2", "to 2 Epic", 3);
-        Task task3 = new Task("Task 3", "кушать");
-        Subtask subtask3 = new Subtask("Subtask 3", "to 3 Epic", 5);
-        Task task4 = new Task("Task 4", "woek");
+        TaskManager manager = new InMemoryTaskManager();
+        Task task = new Task("Эпик 1", "прогать");
+        Subtask subTask = new Subtask("Подзадача 1", "Люто прогать", 1);
+        Task task2 = new Task("Эпик 2", "прогать");
+        Subtask subtask2 = new Subtask("Подзадача 2", "Это ко второму", 3);
+        Task task3 = new Task("Задача 3", "кушать");
+        Subtask subtask3 = new Subtask("Подзадача 3", "Это ко третьему", 5);
+        Task task4 = new Task("Задача 4", "работать");
         manager.addTask(task);
         manager.addSubtask(subTask);
         manager.addTask(task2);
@@ -28,7 +24,7 @@ public class Main {
         manager.addTask(task3);
         manager.addSubtask(subtask3);
         manager.addTask(task4);
-        Subtask subtask4 = new Subtask("Subtask 4", "to 1 epic", task.getId());
+        Subtask subtask4 = new Subtask("Подзадача 4", "Это ко первому", task.getId());
         manager.addSubtask(subtask4);
         subTask.setStatus(TaskStatus.IN_PROGRESS);
         subtask2.setStatus(TaskStatus.DONE);

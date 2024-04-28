@@ -27,13 +27,13 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public Subtask addSubtask(Subtask subTask) {
+    public Subtask addSubtask(Subtask subTask) { //английский плохо знаю, как свободное время появляется, учу
         Epic epic = null;
-        Task savedTaskOrEpic = tasks.get(subTask.getEpicId());
+        Task savedTaskOrEpic = tasks.get(subTask.getEpicId());//поменял
         Task savedTaskOrEpicFromEpics = epics.get(subTask.getEpicId());
 
-        if (savedTaskOrEpic == null && savedTaskOrEpicFromEpics == null) {
-            return null;
+        if (savedTaskOrEpic == null && savedTaskOrEpicFromEpics == null) {//в моей реализации, для каждого типа задачи
+            return null;//строго своя хэш мапа
         }
         if (savedTaskOrEpicFromEpics != null) {
             epic = new Epic(savedTaskOrEpicFromEpics);
@@ -66,9 +66,9 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public Task updateTask(Task task) {
-        Task savedTask = tasks.get(task.getId());
-        if (savedTask == null) {
-            return null;
+        Task savedTask = tasks.get(task.getId());//я ревью замечание отметил как выполненое
+        if (savedTask == null) {//щас не могу посмотреть как ты просил назвать её
+            return null;//savedTask подходит, таск1 да, глупо выглядит
         }
         savedTask.setName(task.getName());
         savedTask.setDescription(task.getDescription());
@@ -78,9 +78,9 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public Subtask updateSubtask(Subtask subTask) {
-        Subtask savedSubTask = subTasks.get(subTask.getId());
-        if (savedSubTask == null) {
-            return null;
+        Subtask savedSubTask = subTasks.get(subTask.getId());//назвал по аналогии
+        if (savedSubTask == null) {//как по мне самое подходящее название для переменной
+            return null;//она же хранит в себе сабтаску, не придумал как по другому назвать
         }
         savedSubTask.setName(subTask.getName());
         savedSubTask.setDescription(subTask.getDescription());
@@ -100,7 +100,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     private Epic updateEpic(Epic epic) {
-        Epic savedEpic = epics.get(epic.getId());
+        Epic savedEpic = epics.get(epic.getId());//назвал по аналогии
         if (savedEpic == null) {
             return null;
         }
@@ -114,7 +114,6 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public boolean deleteTaskById(int id) {
-        historyManager.remove(id);
         return tasks.remove(id) != null;
     }
 
@@ -129,9 +128,9 @@ public class InMemoryTaskManager implements TaskManager {
             return false;
         }
         epic.removeSubTaskId(id);
-        historyManager.remove(id);
         subTasks.remove(id);
         updateEpicStatus(epic.getId());
+        //checkEpicAndConvertToTask(); если как ты сказал, то этот метод тут не нужен (
         return true;
     }
 
@@ -144,7 +143,6 @@ public class InMemoryTaskManager implements TaskManager {
         for (Integer subTaskId : epic.getSubTaskIds()) {
             subTasks.remove(subTaskId);
         }
-        historyManager.remove(id);
         epics.remove(id);
         return true;
     }
@@ -156,11 +154,11 @@ public class InMemoryTaskManager implements TaskManager {
         }
         for (Integer subTaskId : epic.getSubTaskIds()) {
             Subtask subTask = subTasks.get(subTaskId);
-            if (subTask == null) {
+            if (subTask == null) {//долго думал, но думаю если по твоей логике, то если удалить
                 epic.removeAllSubTaskIds();
-                epic.setStatus(TaskStatus.NEW);
-                return;
-            }
+                epic.setStatus(TaskStatus.NEW);//все саб таски, то эпики NEW
+                return;//тестить уже время нет, я в лс отписал и закоментировал метод deleteAllSubTasks
+            }//подумай, может быть это все таки логичнее, в условии прямо не сказано, но мне показалось это очевидным
             if (subTask.getStatus().equals(TaskStatus.NEW)) {
                 return;
             }
@@ -173,7 +171,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public Task getTaskById(int id) {
+    public Task getTaskById(int id) {//спасибо правда, я и не подумал что можно упростить это
         historyManager.add(tasks.get(id));
         return tasks.get(id);
     }
@@ -192,11 +190,15 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void deleteAllTasks() {
-        for (Integer i : this.tasks.keySet()) {
-            historyManager.remove(i);
-        }
         this.tasks.clear();
     }
+
+    /*@Override//моя логика была такой, если в эпике нет сабтасков она становится снова задачей, и в случае чего
+    public void deleteAllSubTasks() {//он может снова добавить подзадачи к ней и сделать эпиком, я встал на
+        this.subTasks.clear();//место пользователя, он понял что эту задачи не стоит разбивать на подзадачи
+        checkEpicAndConvertToTask();//и решил удалить подзадачи к ним, было бы странно если бы остались эпики
+    }//ему бы это мозолило глаза, и ему пришлось бы удалять эпики, и создавать задачи
+    */
 
     @Override
     public void deleteAllSubTasks() {
@@ -204,19 +206,12 @@ public class InMemoryTaskManager implements TaskManager {
         for (Subtask subtask : savedAllSubTasks.values()) {
             Epic savedEpic = epics.get(subtask.getEpicId());
             subTasks.remove(subtask.getId());
-            historyManager.remove(subtask.getId());
             updateEpicStatus(savedEpic.getId());
         }
     }
 
     @Override
     public void deleteAllEpics() {
-        for (Integer i : this.epics.keySet()) {
-            historyManager.remove(i);
-        }
-        for (Integer i : this.subTasks.keySet()) {
-            historyManager.remove(i);
-        }
         this.epics.clear();
         this.subTasks.clear();
     }
@@ -244,7 +239,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public List<Subtask> getSubtasks() {
+    public List<Task> getSubtasks() {
         return new ArrayList<>(subTasks.values());
     }
 
@@ -266,16 +261,12 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public List<Epic> getEpics() {
+    public List<Task> getEpics() {
         return new ArrayList<>(epics.values());
     }
 
     @Override
     public List<Task> getHistory() {
         return historyManager.getHistory();
-    }
-
-    public void setCounterId(int counterId) {
-        this.counterId = counterId;
     }
 }

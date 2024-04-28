@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5697aac-b96c-45d6-949f-0f2dbc4cc358" name="Changes" comment="Fix the project structure">
-      <change afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/TaskType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/FileBackedTaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/opentest4j-1.2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/Epic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/Epic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/Subtask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/Subtask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/TaskStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/TaskStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/InMemoryHistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/InMemoryHistoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/InMemoryTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/InMemoryTaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/TaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/TaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/lib/junit-platform-console-standalone-1.9.3.jar" beforeDir="false" />
-    </list>
+    <list default="true" id="e5697aac-b96c-45d6-949f-0f2dbc4cc358" name="Changes" comment="Fix the project structure" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -110,7 +110,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         }
     }
 
-    static public FileBackedTaskManager loadFromFile(File file) {
+    public static FileBackedTaskManager loadFromFile(File file) {
         try {
             FileBackedTaskManager fileBackedTaskManager = new FileBackedTaskManager(file);
             String stringFile = Files.readString(file.toPath());

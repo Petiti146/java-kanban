@@ -244,7 +244,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public List<Task> getSubtasks() {
+    public List<Subtask> getSubtasks() {
         return new ArrayList<>(subTasks.values());
     }
 
@@ -266,12 +266,16 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public List<Task> getEpics() {
+    public List<Epic> getEpics() {
         return new ArrayList<>(epics.values());
     }
 
     @Override
     public List<Task> getHistory() {
         return historyManager.getHistory();
+    }
+
+    public void setCounterId(int counterId) {
+        this.counterId = counterId;
     }
 }

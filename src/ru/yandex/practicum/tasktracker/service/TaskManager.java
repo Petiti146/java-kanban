@@ -37,11 +37,11 @@ public interface TaskManager {
 
     List<Task> getTasks();
 
-    List<Task> getSubtasks();
+    List<Subtask> getSubtasks();
 
     List<Subtask> getEpicSubtasks(int epicId);
 
-    List<Task> getEpics();
+    List<Epic> getEpics();
 
     List<Task> getHistory();
 }

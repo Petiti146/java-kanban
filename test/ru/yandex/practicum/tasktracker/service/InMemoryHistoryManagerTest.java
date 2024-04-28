@@ -27,21 +27,6 @@ class InMemoryHistoryManagerTest {
         List<Task> tasks = historyManager.getHistory();
 
         assertEquals(task1, tasks.get(0));
-
-        List<Task> preparedTasks = getPreparedTask();
-        for (Task preparedTask : preparedTasks) {
-            historyManager.add(preparedTask);
-        }
-
-        assertEquals(10, historyManager.getHistory().size());
-
-        Task task11 = new Task("Task 11", "Description");
-        task11.setId(11);
-        historyManager.add(task11);
-
-        assertEquals(10, historyManager.getHistory().size());
-        assertEquals(11, historyManager.getHistory().get(9).getId());
-        assertEquals(1, historyManager.getHistory().get(0).getId());
     }
 
     @Test

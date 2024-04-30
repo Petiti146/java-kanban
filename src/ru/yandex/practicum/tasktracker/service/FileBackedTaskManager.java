@@ -115,6 +115,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
             FileBackedTaskManager fileBackedTaskManager = new FileBackedTaskManager(file);
             String stringFile = Files.readString(file.toPath());
             int max = -1;
+
             for (String string : stringFile.split("\n")) {
                 List<String> fields = List.of(string.split(","));
                 if (Integer.parseInt(fields.get(0)) > max) {

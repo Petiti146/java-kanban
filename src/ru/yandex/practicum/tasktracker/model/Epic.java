@@ -1,5 +1,7 @@
 package ru.yandex.practicum.tasktracker.model;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -7,13 +9,17 @@ import java.util.Set;
 public class Epic extends Task {
 
     private final Set<Integer> subTaskIds = new HashSet<>();
+    private LocalDateTime endTime;
 
-    public Epic(Task task) {
-        super(task.getId(), task.getName(), task.getDescription());
+    public Epic(Task task, Subtask subtask) {
+        super(task.getName(), task.getDescription(), subtask.getDuration(), subtask.getStartTime());
+        this.setId(task.getId());
+        this.endTime = subtask.getEndTime();
     }
 
-    public Epic(String epicName, String epicDescription) {
-        super(epicName, epicDescription);
+    public Epic(String epicName, String epicDescription, Duration duration, LocalDateTime startTime, LocalDateTime endTime) {
+        super(epicName, epicDescription, duration, startTime);
+        this.endTime = endTime;
     }
 
     public Set<Integer> getSubTaskIds() {
@@ -24,12 +30,21 @@ public class Epic extends Task {
         subTaskIds.add(subTaskId);
     }
 
-    public void removeSubTaskId(int subTaskId) {
-        subTaskIds.remove(subTaskId);
+    public boolean removeSubTaskId(int subTaskId) {
+        return subTaskIds.remove(subTaskId);
     }
 
     public void removeAllSubTaskIds() {
         subTaskIds.clear();
+    }
+
+    @Override
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
 
     @Override
@@ -55,6 +70,11 @@ public class Epic extends Task {
                 TaskType.EPIC + "," +
                 getName() + "," +
                 getStatus() + "," +
-                getDescription();
+                getDescription() + "," +
+                getDuration() + "," +
+                getStartTime() + "," +
+                getEndTime();
     }
+
+
 }

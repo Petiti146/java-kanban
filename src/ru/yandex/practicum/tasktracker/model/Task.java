@@ -1,5 +1,7 @@
 package ru.yandex.practicum.tasktracker.model;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Task {
@@ -8,18 +10,27 @@ public class Task {
     private String name;
     private String description;
     private TaskStatus status;
+    private Duration duration;
+    private LocalDateTime startTime;
 
-    public Task(String name, String description) {
+    public Task(String name, String description, Duration duration, LocalDateTime startTime) {
         this.name = name;
         this.description = description;
         this.status = TaskStatus.NEW;
+        this.duration = duration;
+        this.startTime = startTime;
     }
 
-    public Task(int id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.status = TaskStatus.NEW;
+    public boolean isCrossing(Task task) { //максимально правильно проверяет на пересечение
+        if (this.getStartTime().isBefore(task.getStartTime())) {
+            return this.getEndTime().isAfter(task.getStartTime());
+        } else {
+            return task.getEndTime().isAfter(this.getStartTime());
+        }
+    }
+
+    public LocalDateTime getEndTime() {
+        return startTime.plus(duration);
     }
 
     public int getId() {
@@ -54,6 +65,22 @@ public class Task {
         this.status = status;
     }
 
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -73,10 +100,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return getId() + "," +
-                TaskType.TASK + "," +
-                name + "," +
-                status + "," +
-                description;
+        return getId() + "," + TaskType.TASK + "," + name + "," + status + "," + description + "," + duration.toMinutes() + "," + startTime;
     }
 }

@@ -1,4 +1,5 @@
 package ru.yandex.practicum.tasktracker.model;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -20,7 +21,7 @@ public class Task {
         this.startTime = startTime;
     }
 
-    public boolean isCrossing(Task task) {//максимально правильно проверяет на пересечение
+    public boolean isCrossing(Task task) { //максимально правильно проверяет на пересечение
         if (this.getStartTime().isBefore(task.getStartTime())) {
             return this.getEndTime().isAfter(task.getStartTime());
         } else {
@@ -99,12 +100,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return getId() + "," +
-                TaskType.TASK + "," +
-                name + "," +
-                status + "," +
-                description + "," +
-                duration.toMinutes() + "," +
-                startTime;
+        return getId() + "," + TaskType.TASK + "," + name + "," + status + "," + description + "," + duration.toMinutes() + "," + startTime;
     }
 }

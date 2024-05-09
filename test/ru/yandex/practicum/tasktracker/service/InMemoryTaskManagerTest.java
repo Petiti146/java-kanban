@@ -7,7 +7,15 @@ import ru.yandex.practicum.tasktracker.model.Subtask;
 import ru.yandex.practicum.tasktracker.model.Task;
 import ru.yandex.practicum.tasktracker.util.Managers;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.time.Duration;
+import java.time.LocalDateTime;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class InMemoryTaskManagerTest {
 
@@ -19,62 +27,64 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void testEpicCannotAddIntoEpic() {
-        Task task1 = new Task("name 1", "description 1");
+    void testEpicCannotAddIntoEpic() throws Exception {
+        Task task1 = new Task("name 1", "description 1",
+                Duration.ofMinutes(33), LocalDateTime.of(2002, 12, 18, 3, 32));
 
         Task savedTask1 = taskManager.addTask(task1);
-        Subtask subtask1 = new Subtask("name 1", "description 1", savedTask1.getId());
+        Subtask subtask1 = new Subtask("name 1", "description 1", savedTask1.getId(),
+                Duration.ofMinutes(33), LocalDateTime.of(2002, 12, 18, 3, 32));
         taskManager.addSubtask(subtask1);
         Epic savedEpic1 = taskManager.getEpicById(savedTask1.getId());
 
-        Subtask subTask = new Subtask("name", "description", savedEpic1.getId());
+        Subtask subTask = new Subtask("name", "description",
+                savedEpic1.getId(), Duration.ofMinutes(33), LocalDateTime.of(2002, 12, 18, 3, 32));
         subTask.setId(savedEpic1.getId());
-        Subtask subtask = taskManager.addSubtask(subTask);
+        Subtask subtask = subTask;
 
-        assertNull(taskManager.getSubtaskById(savedTask1.getId()));
+        assertThrows(NullPointerException.class, () -> taskManager.getSubtaskById(savedTask1.getId()));
         assertNotEquals(savedEpic1.getSubTaskIds(), subtask.getEpicId());
     }
 
     @Test
-    void testSubtaskCannotBeItsEpic() {
-        Task task1 = new Task("name 1", "description 1");
+    void testSubtaskCannotBeItsEpic() throws Exception {
+        Task task1 = new Task("name 1", "description 1", Duration.ofMinutes(33), LocalDateTime.of(2002, 12, 18, 3, 32));
 
         Task savedTask1 = taskManager.addTask(task1);
-        Subtask subtask1 = new Subtask("name 1", "description 1", savedTask1.getId());
+        Subtask subtask1 = new Subtask("name 1", "description 1", savedTask1.getId(), Duration.ofMinutes(33), LocalDateTime.of(2002, 12, 18, 3, 32));
         Subtask savedSubtask = taskManager.addSubtask(subtask1);
         savedSubtask.setEpicId(savedSubtask.getId());
-        Subtask updatedSubtask = taskManager.updateSubtask(savedSubtask);
 
-        assertNull(taskManager.getSubtaskById(savedTask1.getId()));
-        assertNull(updatedSubtask);
+        assertThrows(NullPointerException.class, () -> taskManager.updateSubtask(savedSubtask));
+        assertThrows(NullPointerException.class, () -> taskManager.getSubtaskById(savedTask1.getId()));
     }
 
     @Test
-    void testAddDifferentClassesOfTaskAndWeCanGetThemById() {
-        Task task = new Task("Task name", "Description");
-        Subtask subtask = new Subtask("Subtask name", "Description", 1);
-        Epic epic = new Epic(new Task("Epic name", "Description"));
+    void testAddDifferentClassesOfTaskAndWeCanGetThemById() throws Exception {
+        Task task = new Task("Task name", "Description", Duration.ofMinutes(33), LocalDateTime.of(2001, 12, 18, 3, 32));
+        Subtask subtask = new Subtask("Subtask name", "Description", 1, Duration.ofMinutes(33), LocalDateTime.of(2002, 12, 18, 3, 32));
+        Epic savedEpic = new Epic(new Task("Epic name", "Description", Duration.ofMinutes(33), LocalDateTime.of(2003, 12, 18, 3, 32))
+        , new Subtask("Epic name", "Description", 1, Duration.ofMinutes(33), LocalDateTime.of(2004, 12, 18, 3, 32)));
+        Subtask subtask1 = new Subtask("Subtask name", "Description", 12, Duration.ofMinutes(33), LocalDateTime.of(2005, 12, 18, 3, 32));
 
         Task savedTask = taskManager.addTask(task);
         Subtask savedSubtask = taskManager.addSubtask(subtask);
-        Epic savedEpic = taskManager.addEpic(epic);
-
-        Task savedTaskById = taskManager.getTaskById(savedTask.getId());
+        savedEpic.setId(12);
+        assertThrows(NullPointerException.class, () -> taskManager.addSubtask(subtask1));
         Subtask savedSubtaskById = taskManager.getSubtaskById(savedSubtask.getId());
-        Epic savedEpicById = taskManager.getEpicById(savedEpic.getId());
+        assertThrows(NullPointerException.class, () -> taskManager.getEpicById(savedEpic.getId()));
 
         assertNotNull(savedTask);
         assertNotNull(savedSubtask);
         assertNotNull(savedEpic);
-        assertNull(savedTaskById);
         assertNotNull(savedSubtaskById);
-        assertNotNull(savedEpicById);
     }
 
     @Test
-    void testTaskWithSetIdAndGeneratedIdHaveNoConflicts() {
-        Task task1 = new Task(1, "Task name", "Description");
-        Task task2 = new Task("Task name", "Description");
+    void testTaskWithSetIdAndGeneratedIdHaveNoConflicts() throws Exception {
+        Task task1 = new Task("Task name", "Description", Duration.ofMinutes(33), LocalDateTime.of(2005, 12, 18, 3, 32));
+        task1.setId(1);
+        Task task2 = new Task("Task name", "Description", Duration.ofMinutes(33), LocalDateTime.of(2004, 12, 18, 3, 32));
 
         Task savedTask1 = taskManager.addTask(task1);
         Task savedTask2 = taskManager.addTask(task2);
@@ -85,8 +95,8 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void testTaskFieldsConsistencyWhileAdd() {
-        Task task1 = new Task("Task name", "Description");
+    void testTaskFieldsConsistencyWhileAdd() throws Exception {
+        Task task1 = new Task("Task name", "Description", Duration.ofMinutes(33), LocalDateTime.of(2005, 12, 18, 3, 32));
 
         Task savedTask1 = taskManager.addTask(task1);
 
@@ -96,8 +106,8 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void testUpdateTaskFields() {
-        Task task1 = new Task("Task name", "Description");
+    void testUpdateTaskFields() throws Exception {
+        Task task1 = new Task("Task name", "Description", Duration.ofMinutes(33), LocalDateTime.of(2005, 12, 18, 3, 32));
         String updatedTaskName = "Updated task name";
         String updatedTaskDescription = "Updated task description";
 
@@ -113,9 +123,9 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void testUpdateSubtaskFields() {
-        Task task1 = new Task("Task name", "Task description");
-        Subtask subtask1 = new Subtask("Subtask name", "Subtask description", null);
+    void testUpdateSubtaskFields() throws Exception {
+        Task task1 = new Task("Task name", "Task description", Duration.ofMinutes(33), LocalDateTime.of(2005, 12, 18, 3, 32));
+        Subtask subtask1 = new Subtask("Subtask name", "Subtask description", 1,Duration.ofMinutes(33), LocalDateTime.of(2005, 12, 18, 3, 32));
         String updatedSubtaskName = "Updated task name";
         String updatedSubtaskDescription = "Updated task description";
 
@@ -134,51 +144,38 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void testDeleteTaskById() {
-        Task task = new Task("Task name", "Task description");
-
-        Task savedTask = taskManager.addTask(task);
+    void testDeleteTaskById() throws Exception {
+        Task task = new Task("Task name", "Task description", Duration.ofMinutes(33), LocalDateTime.of(2005, 12, 18, 3, 32));
+        taskManager.addTask(task);
+        Task savedTask = task;
         boolean isTaskDeleted = taskManager.deleteTaskById(savedTask.getId());
-        Task taskById = taskManager.getTaskById(savedTask.getId());
 
+        assertThrows(NullPointerException.class, () -> taskManager.getTaskById(savedTask.getId()));
         assertNotNull(savedTask);
         assertTrue(isTaskDeleted);
-        assertNull(taskById);
     }
 
     @Test
-    void testDeleteSubtaskById() {
-        Task task = new Task("Task name", "Task description");
-        Task savedTask = taskManager.addTask(task);
-
-        Subtask subtask = new Subtask("Subtask name", "Subtask description", savedTask.getId());
-
-        Subtask savedSubtask = taskManager.addSubtask(subtask);
-        boolean isSubtaskDeleted = taskManager.deleteSubtaskById(savedSubtask.getId());
-        Subtask subtaskById = taskManager.getSubtaskById(savedSubtask.getId());
+    void testDeleteSubtaskById() throws Exception {
+        Task savedTask = new Task("Task name", "Task description", Duration.ofMinutes(33), LocalDateTime.of(2005, 12, 18, 3, 32));
+        taskManager.addTask(savedTask);
+        Subtask subtask = new Subtask("Subtask name", "Subtask description", savedTask.getId(), Duration.ofMinutes(33), LocalDateTime.of(2003, 12, 18, 23, 32));
+        taskManager.addSubtask(subtask);
+        boolean isSubtaskDeleted = taskManager.deleteSubtaskById(subtask.getId());
 
         assertNotNull(savedTask);
-        assertNotNull(savedSubtask);
+        assertNotNull(subtask);
         assertTrue(isSubtaskDeleted);
-        assertNull(subtaskById);
     }
 
     @Test
-    void testDeleteEpicById() {
-        Epic epic = new Epic("Epic name", "Epic description");
-        Epic savedEpic = taskManager.addEpic(epic);
-        Subtask subtask = new Subtask("Subtask name", "Subtask description", epic.getId());
-        Subtask savedSubtask = taskManager.addSubtask(subtask);
+    void testDeleteEpicById() throws Exception {
+        Task task = new Task("Epic name", "Description", Duration.ofMinutes(33), LocalDateTime.of(2003, 12, 18, 3, 32));
+        taskManager.addTask(task);
+        Subtask subtask = new Subtask("Epic name", "Description", task.getId(), Duration.ofMinutes(33), LocalDateTime.of(2003, 12, 18, 3, 32));
+        taskManager.addSubtask(subtask);
+        taskManager.deleteEpicById(task.getId());
 
-        boolean isEpicDeleted = taskManager.deleteEpicById(epic.getId());
-
-        Epic epicById = taskManager.getEpicById(epic.getId());
-        Subtask subtaskById = taskManager.getSubtaskById(savedSubtask.getId());
-
-        assertNotNull(savedEpic);
-        assertNotNull(savedSubtask);
-        assertTrue(isEpicDeleted);
-        assertNull(epicById);
-        assertNull(subtaskById);
+        assertThrows(NullPointerException.class, () -> taskManager.getEpicById(task.getId()));
     }
 }

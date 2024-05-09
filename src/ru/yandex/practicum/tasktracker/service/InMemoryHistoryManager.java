@@ -21,7 +21,6 @@ public class InMemoryHistoryManager implements HistoryManager {
         }
     }
 
-
     @Override
     public void linkLast(Task task) {
         Node newNode = new Node(task);

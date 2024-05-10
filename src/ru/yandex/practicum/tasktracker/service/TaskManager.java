@@ -7,15 +7,15 @@ import ru.yandex.practicum.tasktracker.model.Task;
 import java.util.List;
 
 public interface TaskManager {
-    Task addTask(Task task);
+    Task addTask(Task task) throws Exception;
 
     Subtask addSubtask(Subtask subTask);
-
-    Epic addEpic(Epic epic);
 
     Task updateTask(Task task);
 
     Subtask updateSubtask(Subtask subTask);
+
+    Epic updateEpic(Epic epic);
 
     boolean deleteTaskById(int id);
 
@@ -37,11 +37,11 @@ public interface TaskManager {
 
     List<Task> getTasks();
 
-    List<Task> getSubtasks();
+    List<Subtask> getSubtasks();
 
     List<Subtask> getEpicSubtasks(int epicId);
 
-    List<Task> getEpics();
+    List<Epic> getEpics();
 
     List<Task> getHistory();
 }

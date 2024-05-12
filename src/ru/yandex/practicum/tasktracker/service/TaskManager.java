@@ -11,11 +11,11 @@ public interface TaskManager {
 
     Subtask addSubtask(Subtask subTask);
 
-    Epic addEpic(Epic epic);
-
     Task updateTask(Task task);
 
     Subtask updateSubtask(Subtask subTask);
+
+    Epic updateEpic(Epic epic);
 
     boolean deleteTaskById(int id);
 
@@ -37,11 +37,11 @@ public interface TaskManager {
 
     List<Task> getTasks();
 
-    List<Task> getSubtasks();
+    List<Subtask> getSubtasks();
 
     List<Subtask> getEpicSubtasks(int epicId);
 
-    List<Task> getEpics();
+    List<Epic> getEpics();
 
     List<Task> getHistory();
 }

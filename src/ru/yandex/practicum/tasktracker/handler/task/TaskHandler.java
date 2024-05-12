@@ -43,7 +43,9 @@ public class TaskHandler extends AbstractHandler {
 
         String json = getJsonString(inputStream);
 
-        JSONObject jsonObject = new JSONObject(json);
+
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.getAsJsonObject(json);
         int id = jsonObject.getInt("id");
         String name = jsonObject.getString("name");
         String description = jsonObject.getString("description");

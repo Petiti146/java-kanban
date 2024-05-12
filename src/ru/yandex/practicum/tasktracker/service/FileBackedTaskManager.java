@@ -24,7 +24,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
     }
 
     @Override
-    public Task addTask(Task task) throws IllegalArgumentException {
+    public Task addTask(Task task) {
         Task savedTask = super.addTask(task);
         saveToFile();
         return savedTask;

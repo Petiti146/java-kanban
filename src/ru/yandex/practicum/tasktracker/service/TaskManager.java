@@ -7,7 +7,7 @@ import ru.yandex.practicum.tasktracker.model.Task;
 import java.util.List;
 
 public interface TaskManager {
-    Task addTask(Task task) throws Exception;
+    Task addTask(Task task);
 
     Subtask addSubtask(Subtask subTask);
 

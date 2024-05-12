@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5697aac-b96c-45d6-949f-0f2dbc4cc358" name="Changes" comment="Fix the project structure">
-      <change afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/exeption/ManagerLoadException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/HttpTaskServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/handler/AbstractHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/handler/task/TaskHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/Epic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/Epic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/Subtask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/Subtask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/TaskStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/model/TaskStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/m1-t25-api" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/FileBackedTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/FileBackedTaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/InMemoryHistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/InMemoryHistoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/InMemoryTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/InMemoryTaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/ManagerSaveException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/exeption/ManagerSaveException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/ManagerSaveException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/TaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/TaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/util/Managers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/util/Managers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ru/yandex/practicum/tasktracker/model/TaskTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ru/yandex/practicum/tasktracker/model/TaskTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ru/yandex/practicum/tasktracker/service/InMemoryHistoryManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ru/yandex/practicum/tasktracker/service/InMemoryHistoryManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ru/yandex/practicum/tasktracker/service/InMemoryTaskManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ru/yandex/practicum/tasktracker/service/InMemoryTaskManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +31,18 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitRewordedCommitMessages">
+    <option name="commitMessagesMapping">
+      <RewordedCommitMessageMapping>
+        <option name="originalMessage" value="implemented a new logic" />
+        <option name="rewordedMessage" value="implemented a new logic" />
+      </RewordedCommitMessageMapping>
+    </option>
+    <option name="currentCommit" value="1" />
+    <option name="onto" value="ccc93df76f637f9f64180380ef2c8f48858ef429" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -53,48 +54,49 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2cPFaxeUUQ7KNfJJRug43G3LeGB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.SprintFo.executor": "Run",
-    "Application.Test.executor": "Debug",
-    "Application.model.Main.executor": "Run",
-    "Application.taskManager.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "true",
-    "JUnit.All in java-kanban.executor": "Run",
-    "JUnit.InMemoryHistoryManagerTest.addNewTask.executor": "Run",
-    "JUnit.InMemoryHistoryManagerTest.executor": "Run",
-    "JUnit.InMemoryTaskManagerTest.addNewTask.executor": "Run",
-    "JUnit.InMemoryTaskManagerTest.executor": "Run",
-    "JUnit.InMemoryTaskManagerTest.testAddDifferentClassesOfTaskAndWeCanGetThemById.executor": "Run",
-    "JUnit.InMemoryTaskManagerTest.testDeleteEpicById.executor": "Run",
-    "JUnit.InMemoryTaskManagerTest.testDeleteSubtaskById.executor": "Debug",
-    "JUnit.InMemoryTaskManagerTest.testDeleteTaskById.executor": "Run",
-    "JUnit.InMemoryTaskManagerTest.testEpicCannotAddIntoEpic.executor": "Run",
-    "JUnit.InMemoryTaskManagerTest.testSubtaskCannotBeItsEpic.executor": "Run",
-    "JUnit.ManagersTest.executor": "Debug",
-    "JUnit.TaskTest.executor": "Run",
-    "JUnit.ru.yandex.practicum.tasktracker in java-kanban.executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "sprint__8-solution-time-and-duration",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.editor"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SprintFo.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.model.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.taskManager.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;JUnit.All in java-kanban.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InMemoryHistoryManagerTest.addNewTask.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InMemoryHistoryManagerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InMemoryTaskManagerTest.addNewTask.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InMemoryTaskManagerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InMemoryTaskManagerTest.testAddDifferentClassesOfTaskAndWeCanGetThemById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InMemoryTaskManagerTest.testDeleteEpicById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InMemoryTaskManagerTest.testDeleteSubtaskById.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.InMemoryTaskManagerTest.testDeleteTaskById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InMemoryTaskManagerTest.testEpicCannotAddIntoEpic.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InMemoryTaskManagerTest.testSubtaskCannotBeItsEpic.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ManagersTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.TaskTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ru.yandex.practicum.tasktracker in java-kanban.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sprint__9-solution-http-api&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ru.yandex.practicum.tasktracker.service" />
@@ -270,7 +272,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/sprint_7-solution-in-file-manager" />
+                        <option value="sprint_8-solution-time-and-duration" />
                       </list>
                     </value>
                   </entry>
@@ -316,7 +318,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/ru/yandex/practicum/tasktracker/service/InMemoryTaskManager.java</url>
           <line>37</line>
-          <properties class="ru.yandex.practicum.tasktracker.service.InMemoryTaskManager" method="addSubtask">
+          <properties class="ru.yandex.practicum.tasktracker.service.InMemoryTaskManager">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

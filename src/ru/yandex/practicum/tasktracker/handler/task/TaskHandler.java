@@ -42,15 +42,16 @@ public class TaskHandler extends AbstractHandler {
         InputStream inputStream = exchange.getRequestBody();
 
         String json = getJsonString(inputStream);
+        JsonObject jsonObjectString = new JsonObject();
 
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.getAsJsonObject(json);
-        int id = jsonObject.getInt("id");
-        String name = jsonObject.getString("name");
-        String description = jsonObject.getString("description");
-        Duration duration = jsonObject.getString("duration");
-        LocalDateTime startTime = jsonObject.getString("startTime");
+        int id = jsonObject.getAsInt();
+        String name = jsonObject.getAsString();
+        String description = jsonObject.getAsString();
+        Duration duration = Duration.parse(jsonObject.getAsString());
+        LocalDateTime startTime = LocalDateTime.parse(jsonObject.getAsString());
 
         Task task = new Task(name, description, duration, startTime);
 
